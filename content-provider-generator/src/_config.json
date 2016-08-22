@@ -1,0 +1,13 @@
+{
+  "syntaxVersion": 3,
+  "projectPackageId": "com.ddmeng.preferencesprovider",
+  "authority": "com.ddmeng.preferencesprovider.provider",
+  "providerJavaPackage": "com.ddmeng.preferencesprovider.provider",
+  "providerClassName": "PreferencesProvider",
+  "sqliteOpenHelperClassName": "PreferencesSQLiteOpenHelper",
+  "sqliteOpenHelperCallbacksClassName": "PreferencesSQLiteOpenHelperCallbacks",
+  "databaseFileName": "preferencesProvider.db",
+  "databaseVersion": 1,
+  "enableForeignKeys": true,
+  "useAnnotations": true
+}
