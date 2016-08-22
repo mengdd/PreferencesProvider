@@ -1,3 +1,4 @@
+# From Github
 # Built application files
 *.apk
 *.ap_
@@ -38,3 +39,15 @@ captures/
 
 # Keystore files
 *.jks
+
+# From Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
