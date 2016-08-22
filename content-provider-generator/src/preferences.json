@@ -1,0 +1,23 @@
+{
+  "fields": [
+    {
+      "name": "module",
+      "type": "String"
+    },
+    {
+      "name": "key",
+      "type": "String",
+      "nullable": false
+    },
+    {
+      "name": "value",
+      "type": "String"
+    }
+  ],
+  "constraints": [
+    {
+      "name": "unique_name",
+      "definition": "UNIQUE (module, key) ON CONFLICT REPLACE"
+    }
+  ]
+}

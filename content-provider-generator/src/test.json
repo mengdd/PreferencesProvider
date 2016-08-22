@@ -1,9 +1,0 @@
-{
-  "fields": [
-    {
-      "name": "age",
-      "type": "Integer",
-      "index": true
-    }
-  ]
-}

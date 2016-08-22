@@ -15,6 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name="com.ddmeng.preferencesprovider.provider.PreferencesProvider"
+            android:authorities="com.ddmeng.preferencesprovider.provider"
+            android:exported="false" />
     </application>
 
 </manifest>

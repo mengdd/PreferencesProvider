@@ -8,6 +8,6 @@
   "sqliteOpenHelperCallbacksClassName": "PreferencesSQLiteOpenHelperCallbacks",
   "databaseFileName": "preferencesProvider.db",
   "databaseVersion": 1,
-  "enableForeignKeys": true,
+  "enableForeignKeys": false,
   "useAnnotations": true
 }
