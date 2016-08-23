@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.ddmeng.preferencesprovider.provider.PreferenceItem;
 import com.ddmeng.preferencesprovider.provider.PreferencesHelper;
 import com.ddmeng.preferencesprovider.provider.PreferencesStorageModule;
 import com.ddmeng.preferencesprovider.provider.exception.ItemNotFoundException;
 import com.ddmeng.preferencesprovider.utils.LogUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -125,5 +128,15 @@ public class MainActivity extends AppCompatActivity {
     void clear() {
         int count = preferenceStorageModule.clear();
         queryDataOutput.setText(String.valueOf(count));
+    }
+
+    @OnClick(R.id.get_all)
+    void getAll() {
+        List<PreferenceItem> items = preferenceStorageModule.getAll();
+        String result = "get all-> count: " + items.size() + "\n";
+        for (PreferenceItem item : items) {
+            result += item.toString() + "\n";
+        }
+        queryDataOutput.setText(result);
     }
 }

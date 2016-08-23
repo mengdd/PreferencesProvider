@@ -11,6 +11,9 @@ import com.ddmeng.preferencesprovider.provider.preferences.PreferencesCursor;
 import com.ddmeng.preferencesprovider.provider.preferences.PreferencesSelection;
 import com.ddmeng.preferencesprovider.utils.LogUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PreferencesHelper {
 
     private static final String TAG = PreferencesHelper.class.getSimpleName();
@@ -55,6 +58,18 @@ public class PreferencesHelper {
 
     public int clear(@NonNull final String moduleName) {
         return new PreferencesSelection().module(moduleName).delete(contentResolver);
+    }
+
+    public List<PreferenceItem> getAll(@NonNull final String moduleName) {
+        PreferencesCursor cursor = new PreferencesSelection().module(moduleName).query(contentResolver);
+        final ArrayList<PreferenceItem> list = new ArrayList<>();
+        if (cursor != null) {
+            for (boolean hasItem = cursor.moveToFirst(); hasItem; hasItem = cursor.moveToNext()) {
+                list.add(new PreferenceItem(cursor));
+            }
+        }
+        closeQuietly(cursor);
+        return list;
     }
 
     private static void closeQuietly(Cursor cursor) {

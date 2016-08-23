@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import com.ddmeng.preferencesprovider.provider.exception.ItemNotFoundException;
 import com.ddmeng.preferencesprovider.provider.exception.WrongTypeException;
 
+import java.util.List;
+
 public class PreferencesStorageModule {
 
     private final String moduleName;
@@ -128,6 +130,10 @@ public class PreferencesStorageModule {
 
     public int clear() {
         return preferencesHelper.clear(moduleName);
+    }
+
+    public List<PreferenceItem> getAll() {
+        return preferencesHelper.getAll(moduleName);
     }
 
     /**

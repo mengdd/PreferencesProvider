@@ -84,5 +84,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Clear" />
+
+        <Button
+            android:id="@+id/get_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get All" />
     </LinearLayout>
 </ScrollView>
