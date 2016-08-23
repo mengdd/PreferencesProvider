@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.ddmeng.preferencesprovider.provider.PreferenceStorageModule;
 import com.ddmeng.preferencesprovider.provider.PreferencesHelper;
+import com.ddmeng.preferencesprovider.provider.exception.ItemNotFoundException;
+import com.ddmeng.preferencesprovider.utils.LogUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,13 +63,47 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.query_data)
     void queryData() {
-        // normal cases, existing data, no default value given
-        String stringValue = preferenceStorageModule.getString("stringKey");
-        boolean boolean1 = preferenceStorageModule.getBoolean("booleanKey1");
-        boolean boolean2 = preferenceStorageModule.getBoolean("booleanKey2");
-        int intValue = preferenceStorageModule.getInt("intKey");
-        float floatValue = preferenceStorageModule.getFloat("floatKey");
-        long longValue = preferenceStorageModule.getLong("longKey");
+        // normal cases, existing data, no default value given, have to add try-catch block
+        try {
+            String stringValue = preferenceStorageModule.getString("stringKey");
+            boolean boolean1 = preferenceStorageModule.getBoolean("booleanKey1");
+            boolean boolean2 = preferenceStorageModule.getBoolean("booleanKey2");
+            int intValue = preferenceStorageModule.getInt("intKey");
+            float floatValue = preferenceStorageModule.getFloat("floatKey");
+            long longValue = preferenceStorageModule.getLong("longKey");
+
+            String queryResult = "string: " + stringValue + "\n" +
+                    "boolean: " + boolean1 + "\n" +
+                    "boolean: " + boolean2 + "\n" +
+                    "int: " + intValue + "\n" +
+                    "float: " + floatValue + "\n" +
+                    "long: " + longValue + "\n";
+            queryDataOutput.setText(queryResult);
+        } catch (ItemNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @OnClick(R.id.query_data_not_exist)
+    void queryDataNotExist() {
+        // the data is not existed, no default value given
+        try {
+            String stringValue = preferenceStorageModule.getString("non-existing-key");
+        } catch (ItemNotFoundException e) {
+            e.printStackTrace();
+            LogUtils.e("item not found for non-existing-key");
+        }
+
+        // the data is not existed, default values given
+
+        String stringValue = preferenceStorageModule.getString("non-existing-key-2", "defaultValue");
+        boolean boolean1 = preferenceStorageModule.getBoolean("non-existing-booleanKey1", false);
+        boolean boolean2 = preferenceStorageModule.getBoolean("non-existing-booleanKey2", false);
+        int intValue = preferenceStorageModule.getInt("non-existing-intKey", 0);
+        float floatValue = preferenceStorageModule.getFloat("non-existing-floatKey", 0f);
+        long longValue = preferenceStorageModule.getLong("non-existing-longKey", 0L);
 
         String queryResult = "string: " + stringValue + "\n" +
                 "boolean: " + boolean1 + "\n" +

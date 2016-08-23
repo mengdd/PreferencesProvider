@@ -58,6 +58,12 @@
         android:layout_height="wrap_content"
         android:text="Query data" />
 
+    <Button
+        android:id="@+id/query_data_not_exist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query data Not Exist" />
+
     <TextView
         android:id="@+id/query_data_output"
         android:layout_width="wrap_content"
