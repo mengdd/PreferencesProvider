@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.ddmeng.preferencesprovider.provider.PreferenceStorageModule;
+import com.ddmeng.preferencesprovider.provider.PreferencesStorageModule;
 import com.ddmeng.preferencesprovider.provider.PreferencesHelper;
 import com.ddmeng.preferencesprovider.provider.exception.ItemNotFoundException;
 import com.ddmeng.preferencesprovider.utils.LogUtils;
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TextView queryDataOutput;
 
     PreferencesHelper helper;
-    PreferenceStorageModule preferenceStorageModule;
+    PreferencesStorageModule preferenceStorageModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         helper = new PreferencesHelper(this);
-        preferenceStorageModule = new PreferenceStorageModule(this, "HelloModule1");
+        preferenceStorageModule = new PreferencesStorageModule(this, "HelloModule1");
     }
 
     @OnClick(R.id.insert)

@@ -7,12 +7,12 @@ import android.support.annotation.Nullable;
 import com.ddmeng.preferencesprovider.provider.exception.ItemNotFoundException;
 import com.ddmeng.preferencesprovider.provider.exception.WrongTypeException;
 
-public class PreferenceStorageModule {
+public class PreferencesStorageModule {
 
     private final String moduleName;
     private PreferencesHelper preferencesHelper;
 
-    public PreferenceStorageModule(Context context, String moduleName) {
+    public PreferencesStorageModule(Context context, String moduleName) {
         this.moduleName = moduleName;
         preferencesHelper = new PreferencesHelper(context);
     }
