@@ -122,6 +122,14 @@ public class PreferencesStorageModule {
         }
     }
 
+    public int remove(@NonNull final String key) {
+        return preferencesHelper.remove(moduleName, key);
+    }
+
+    public int clear() {
+        return preferencesHelper.clear(moduleName);
+    }
+
     /**
      * logs a warning that warns that the given value for the given key is null and null is only
      * supported when reading it as a String and not other java primitives

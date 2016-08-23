@@ -49,6 +49,14 @@ public class PreferencesHelper {
         return value;
     }
 
+    public int remove(@NonNull final String moduleName, @NonNull final String key) {
+        return new PreferencesSelection().module(moduleName).and().key(key).delete(contentResolver);
+    }
+
+    public int clear(@NonNull final String moduleName) {
+        return new PreferencesSelection().module(moduleName).delete(contentResolver);
+    }
+
     private static void closeQuietly(Cursor cursor) {
         if (cursor != null) {
             cursor.close();

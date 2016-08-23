@@ -5,8 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.ddmeng.preferencesprovider.provider.PreferencesStorageModule;
 import com.ddmeng.preferencesprovider.provider.PreferencesHelper;
+import com.ddmeng.preferencesprovider.provider.PreferencesStorageModule;
 import com.ddmeng.preferencesprovider.provider.exception.ItemNotFoundException;
 import com.ddmeng.preferencesprovider.utils.LogUtils;
 
@@ -113,5 +113,17 @@ public class MainActivity extends AppCompatActivity {
                 "long: " + longValue + "\n";
         queryDataOutput.setText(queryResult);
 
+    }
+
+    @OnClick(R.id.remove)
+    void remove() {
+        int count = preferenceStorageModule.remove("stringKey");
+        queryDataOutput.setText(String.valueOf(count));
+    }
+
+    @OnClick(R.id.clear)
+    void clear() {
+        int count = preferenceStorageModule.clear();
+        queryDataOutput.setText(String.valueOf(count));
     }
 }
