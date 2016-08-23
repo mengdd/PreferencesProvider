@@ -45,4 +45,21 @@
         android:id="@+id/value_output"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/insert_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Insert data" />
+
+    <Button
+        android:id="@+id/query_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query data" />
+
+    <TextView
+        android:id="@+id/query_data_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

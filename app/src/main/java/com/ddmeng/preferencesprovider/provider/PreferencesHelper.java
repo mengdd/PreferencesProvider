@@ -24,6 +24,10 @@ public class PreferencesHelper {
 
     }
 
+    public void insert(@NonNull final String moduleName, @NonNull final String key, @Nullable Object value) {
+        insert(moduleName, key, String.valueOf(value));
+    }
+
     public void insert(@NonNull final String moduleName, @NonNull final String key, @Nullable String value) {
         LogUtils.i(TAG, "insert: module " + moduleName + ", " + key + " = " + value);
         PreferencesContentValues contentValues = new PreferencesContentValues();
