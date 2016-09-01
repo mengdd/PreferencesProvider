@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 import com.ddmeng.preferencesprovider.provider.PreferencesProvider;
-import com.ddmeng.preferencesprovider.provider.preferences.PreferencesColumns;
 
 /**
  * Columns for the {@code preferences} table.

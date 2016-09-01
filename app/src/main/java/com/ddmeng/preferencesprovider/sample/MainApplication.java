@@ -1,4 +1,4 @@
-package com.ddmeng.preferencesprovider;
+package com.ddmeng.preferencesprovider.sample;
 
 import android.app.Application;
 

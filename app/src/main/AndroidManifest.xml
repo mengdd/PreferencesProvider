@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ddmeng.preferencesprovider">
+    package="com.ddmeng.preferencesprovider.sample">
 
     <application
         android:name=".MainApplication"
@@ -16,10 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider
-            android:name="com.ddmeng.preferencesprovider.provider.PreferencesProvider"
-            android:authorities="com.ddmeng.preferencesprovider.provider"
-            android:exported="false" />
     </application>
 
 </manifest>

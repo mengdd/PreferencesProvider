@@ -1,7 +1,5 @@
 package com.ddmeng.preferencesprovider.provider.preferences;
 
-import java.util.Date;
-
 import android.database.Cursor;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

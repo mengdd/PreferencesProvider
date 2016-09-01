@@ -1,7 +1,5 @@
 package com.ddmeng.preferencesprovider.provider.preferences;
 
-import java.util.Date;
-
 import android.content.Context;
 import android.content.ContentResolver;
 import android.database.Cursor;
