@@ -1,13 +1,13 @@
 package com.ddmeng.preferencesprovider.provider.base;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import android.content.Context;
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
 
 public abstract class AbstractSelection<T extends AbstractSelection<?>> {
     private static final String EQ = "=?";
@@ -256,12 +256,14 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
     }
 
     protected Object[] toObjectArray(Boolean value) {
-        return new Object[] { value };
+        return new Object[]{value};
     }
 
 
     /**
      * Returns the selection produced by this object.
+     *
+     * @return the selection produced by this object.
      */
     public String sel() {
         return mSelection.toString();
@@ -269,6 +271,8 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
 
     /**
      * Returns the selection arguments produced by this object.
+     *
+     * @return the selection arguments produced by this object.
      */
     public String[] args() {
         int size = mSelectionArgs.size();
@@ -278,6 +282,8 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
 
     /**
      * Returns the order string produced by this object.
+     *
+     * @return the order string.
      */
     public String order() {
         return mOrderBy.length() > 0 ? mOrderBy.toString() : null;
@@ -285,6 +291,8 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
 
     /**
      * Returns the {@code uri} argument to pass to the {@code ContentResolver} methods.
+     *
+     * @return the Uri to pass to ContentResolver.
      */
     public Uri uri() {
         Uri uri = baseUri();
@@ -362,7 +370,7 @@ public abstract class AbstractSelection<T extends AbstractSelection<?>> {
     }
 
     public int count(ContentResolver resolver) {
-        Cursor cursor = resolver.query(uri(), new String[] { COUNT }, sel(), args(), null);
+        Cursor cursor = resolver.query(uri(), new String[]{COUNT}, sel(), args(), null);
         if (cursor == null) return 0;
         try {
             return cursor.moveToFirst() ? cursor.getInt(0) : 0;

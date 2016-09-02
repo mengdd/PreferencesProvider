@@ -1,7 +1,7 @@
 package com.ddmeng.preferencesprovider.provider.preferences;
 
-import android.content.Context;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -21,7 +21,8 @@ public class PreferencesContentValues extends AbstractContentValues {
      * Update row(s) using the values stored by this object and the given selection.
      *
      * @param contentResolver The content resolver to use.
-     * @param where The selection to use (can be {@code null}).
+     * @param where           The selection to use (can be {@code null}).
+     * @return count of updated rows.
      */
     public int update(ContentResolver contentResolver, @Nullable PreferencesSelection where) {
         return contentResolver.update(uri(), values(), where == null ? null : where.sel(), where == null ? null : where.args());
@@ -30,8 +31,9 @@ public class PreferencesContentValues extends AbstractContentValues {
     /**
      * Update row(s) using the values stored by this object and the given selection.
      *
-     * @param contentResolver The content resolver to use.
-     * @param where The selection to use (can be {@code null}).
+     * @param context The context to use for getting content resolver.
+     * @param where   The selection to use (can be {@code null}).
+     * @return count of updated rows.
      */
     public int update(Context context, @Nullable PreferencesSelection where) {
         return context.getContentResolver().update(uri(), values(), where == null ? null : where.sel(), where == null ? null : where.args());

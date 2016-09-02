@@ -1,7 +1,7 @@
 package com.ddmeng.preferencesprovider.provider.preferences;
 
-import android.content.Context;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 
@@ -20,7 +20,7 @@ public class PreferencesSelection extends AbstractSelection<PreferencesSelection
      * Query the given content resolver using this selection.
      *
      * @param contentResolver The content resolver to query.
-     * @param projection A list of which columns to return. Passing null will return all columns, which is inefficient.
+     * @param projection      A list of which columns to return. Passing null will return all columns, which is inefficient.
      * @return A {@code PreferencesCursor} object, which is positioned before the first entry, or null.
      */
     public PreferencesCursor query(ContentResolver contentResolver, String[] projection) {
@@ -31,6 +31,9 @@ public class PreferencesSelection extends AbstractSelection<PreferencesSelection
 
     /**
      * Equivalent of calling {@code query(contentResolver, null)}.
+     *
+     * @param contentResolver the content resolver to query.
+     * @return A {@code PreferencesCursor} object, which is positioned before the first entry, or null.
      */
     public PreferencesCursor query(ContentResolver contentResolver) {
         return query(contentResolver, null);
@@ -39,7 +42,7 @@ public class PreferencesSelection extends AbstractSelection<PreferencesSelection
     /**
      * Query the given content resolver using this selection.
      *
-     * @param context The context to use for the query.
+     * @param context    The context to use for getting the content resolver.
      * @param projection A list of which columns to return. Passing null will return all columns, which is inefficient.
      * @return A {@code PreferencesCursor} object, which is positioned before the first entry, or null.
      */
@@ -51,6 +54,9 @@ public class PreferencesSelection extends AbstractSelection<PreferencesSelection
 
     /**
      * Equivalent of calling {@code query(context, null)}.
+     *
+     * @param context the context to use for getting the content resolver.
+     * @return A {@code PreferencesCursor} object, which is positioned before the first entry, or null.
      */
     public PreferencesCursor query(Context context) {
         return query(context, null);
