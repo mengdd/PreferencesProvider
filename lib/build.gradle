@@ -11,15 +11,47 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {}
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
+configurations {
+    javadocDeps
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'preferences-provider'
+
+    publishedGroupId = 'com.mengdd.preferencesprovider'
+    libraryName = 'PreferencesProvider'
+    artifact = 'preferences-provider'
+
+    libraryDescription = 'A replacement of Android SharedPreferences based on ContentProvider.'
+
+    siteUrl = 'https://github.com/mengdd/PreferencesProvider'
+    gitUrl = 'https://github.com/mengdd/PreferencesProvider'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'mengdd'
+    developerName = 'Dandan Meng'
+    developerEmail = 'mengdandanno1@163.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
+    javadocDeps 'com.android.support:support-annotations:24.2.0'
 }
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'
