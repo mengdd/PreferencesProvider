@@ -53,5 +53,5 @@ dependencies {
     javadocDeps 'com.android.support:support-annotations:24.2.0'
 }
 
-apply from: '../install.gradle'
-apply from: '../bintray.gradle'
+apply from: 'install.gradle'
+apply from: 'bintray.gradle'

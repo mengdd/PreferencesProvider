@@ -1,1 +1,3 @@
-include ':app', ':lib'
+include 'lib', ':sample'
+project(':lib').name = 'preferences-provider'
+include 'sample'
