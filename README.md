@@ -25,7 +25,7 @@ dependencies {
 A storage module is a group of preferences with a group name. You can create as many modules as you need.
 
 ```java
-preferenceStorageModule = new PreferencesStorageModule(this, "HelloModule1");
+myModule = new PreferencesStorageModule(this, "HelloModule1");
 ```
 
 ### 2. Put values
@@ -34,12 +34,12 @@ The key is a String,
 The value can be String, boolean, int, float or long.
 
 ```java
-preferenceStorageModule.put("stringKey", "Hello");
-preferenceStorageModule.put("booleanKey1", true);
-preferenceStorageModule.put("booleanKey2", false);
-preferenceStorageModule.put("intKey", 123);
-preferenceStorageModule.put("floatKey", 1.5f);
-preferenceStorageModule.put("longKey", 123L);
+myModule.put("stringKey", "Hello");
+myModule.put("booleanKey1", true);
+myModule.put("booleanKey2", false);
+myModule.put("intKey", 123);
+myModule.put("floatKey", 1.5f);
+myModule.put("longKey", 123L);
 ```
 
 ### 3. Get values
@@ -49,12 +49,12 @@ We know we can pass a default value as parameter when you get SharedPreferences 
 **With Default Values:**
 
 ```java
-String stringValue = preferenceStorageModule.getString("non-existing-key-2", "defaultValue");
-boolean boolean1 = preferenceStorageModule.getBoolean("non-existing-booleanKey1", false);
-boolean boolean2 = preferenceStorageModule.getBoolean("non-existing-booleanKey2", false);
-int intValue = preferenceStorageModule.getInt("non-existing-intKey", 0);
-float floatValue = preferenceStorageModule.getFloat("non-existing-floatKey", 0f);
-long longValue = preferenceStorageModule.getLong("non-existing-longKey", 0L);
+String stringValue = myModule.getString("non-existing-key-2", "defaultValue");
+boolean boolean1 = myModule.getBoolean("non-existing-booleanKey1", false);
+boolean boolean2 = myModule.getBoolean("non-existing-booleanKey2", false);
+int intValue = myModule.getInt("non-existing-intKey", 0);
+float floatValue = myModule.getFloat("non-existing-floatKey", 0f);
+long longValue = myModule.getLong("non-existing-longKey", 0L);
 ```
 
 **Without Default Values**
@@ -63,12 +63,12 @@ You will have to add a try-catch block when you are trying to get value but not 
 
 ```java
 try {
-    String stringValue = preferenceStorageModule.getString("stringKey");
-    boolean boolean1 = preferenceStorageModule.getBoolean("booleanKey1");
-    boolean boolean2 = preferenceStorageModule.getBoolean("booleanKey2");
-    int intValue = preferenceStorageModule.getInt("intKey");
-    float floatValue = preferenceStorageModule.getFloat("floatKey");
-    long longValue = preferenceStorageModule.getLong("longKey");
+    String stringValue = myModule.getString("stringKey");
+    boolean boolean1 = myModule.getBoolean("booleanKey1");
+    boolean boolean2 = myModule.getBoolean("booleanKey2");
+    int intValue = myModule.getInt("intKey");
+    float floatValue = myModule.getFloat("floatKey");
+    long longValue = myModule.getLong("longKey");
 
     ...
 

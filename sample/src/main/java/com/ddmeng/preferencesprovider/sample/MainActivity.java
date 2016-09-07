@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     TextView queryDataOutput;
 
     PreferencesHelper helper;
-    PreferencesStorageModule preferenceStorageModule;
+    PreferencesStorageModule myModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         helper = new PreferencesHelper(this);
-        preferenceStorageModule = new PreferencesStorageModule(this, "HelloModule1");
+        myModule = new PreferencesStorageModule(this, "HelloModule1");
     }
 
     @OnClick(R.id.insert)
@@ -56,24 +56,24 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.insert_data)
     void insertData() {
-        preferenceStorageModule.put("stringKey", "Hello");
-        preferenceStorageModule.put("booleanKey1", true);
-        preferenceStorageModule.put("booleanKey2", false);
-        preferenceStorageModule.put("intKey", 123);
-        preferenceStorageModule.put("floatKey", 1.5f);
-        preferenceStorageModule.put("longKey", 123L);
+        myModule.put("stringKey", "Hello");
+        myModule.put("booleanKey1", true);
+        myModule.put("booleanKey2", false);
+        myModule.put("intKey", 123);
+        myModule.put("floatKey", 1.5f);
+        myModule.put("longKey", 123L);
     }
 
     @OnClick(R.id.query_data)
     void queryData() {
         // normal cases, existing data, no default value given, have to add try-catch block
         try {
-            String stringValue = preferenceStorageModule.getString("stringKey");
-            boolean boolean1 = preferenceStorageModule.getBoolean("booleanKey1");
-            boolean boolean2 = preferenceStorageModule.getBoolean("booleanKey2");
-            int intValue = preferenceStorageModule.getInt("intKey");
-            float floatValue = preferenceStorageModule.getFloat("floatKey");
-            long longValue = preferenceStorageModule.getLong("longKey");
+            String stringValue = myModule.getString("stringKey");
+            boolean boolean1 = myModule.getBoolean("booleanKey1");
+            boolean boolean2 = myModule.getBoolean("booleanKey2");
+            int intValue = myModule.getInt("intKey");
+            float floatValue = myModule.getFloat("floatKey");
+            long longValue = myModule.getLong("longKey");
 
             String queryResult = "string: " + stringValue + "\n" +
                     "boolean: " + boolean1 + "\n" +
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     void queryDataNotExist() {
         // the data is not existed, no default value given
         try {
-            String stringValue = preferenceStorageModule.getString("non-existing-key");
+            String stringValue = myModule.getString("non-existing-key");
         } catch (ItemNotFoundException e) {
             e.printStackTrace();
             LogUtils.e("item not found for non-existing-key");
@@ -101,12 +101,12 @@ public class MainActivity extends AppCompatActivity {
 
         // the data is not existed, default values given
 
-        String stringValue = preferenceStorageModule.getString("non-existing-key-2", "defaultValue");
-        boolean boolean1 = preferenceStorageModule.getBoolean("non-existing-booleanKey1", false);
-        boolean boolean2 = preferenceStorageModule.getBoolean("non-existing-booleanKey2", false);
-        int intValue = preferenceStorageModule.getInt("non-existing-intKey", 0);
-        float floatValue = preferenceStorageModule.getFloat("non-existing-floatKey", 0f);
-        long longValue = preferenceStorageModule.getLong("non-existing-longKey", 0L);
+        String stringValue = myModule.getString("non-existing-key-2", "defaultValue");
+        boolean boolean1 = myModule.getBoolean("non-existing-booleanKey1", false);
+        boolean boolean2 = myModule.getBoolean("non-existing-booleanKey2", false);
+        int intValue = myModule.getInt("non-existing-intKey", 0);
+        float floatValue = myModule.getFloat("non-existing-floatKey", 0f);
+        long longValue = myModule.getLong("non-existing-longKey", 0L);
 
         String queryResult = "string: " + stringValue + "\n" +
                 "boolean: " + boolean1 + "\n" +
@@ -120,19 +120,19 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.remove)
     void remove() {
-        int count = preferenceStorageModule.remove("stringKey");
+        int count = myModule.remove("stringKey");
         queryDataOutput.setText(String.valueOf(count));
     }
 
     @OnClick(R.id.clear)
     void clear() {
-        int count = preferenceStorageModule.clear();
+        int count = myModule.clear();
         queryDataOutput.setText(String.valueOf(count));
     }
 
     @OnClick(R.id.get_all)
     void getAll() {
-        List<PreferenceItem> items = preferenceStorageModule.getAll();
+        List<PreferenceItem> items = myModule.getAll();
         String result = "get all-> count: " + items.size() + "\n";
         for (PreferenceItem item : items) {
             result += item.toString() + "\n";
