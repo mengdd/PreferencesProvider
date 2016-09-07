@@ -1,4 +1,6 @@
 # PreferencesProvider
+[ ![Download](https://api.bintray.com/packages/mengdd/maven/preferences-provider/images/download.svg) ](https://bintray.com/mengdd/maven/preferences-provider/_latestVersion)
+
 A replacement of Android SharedPreferences based on ContentProvider.
 
 It solves the problem when we have to store/use preference values across process.
