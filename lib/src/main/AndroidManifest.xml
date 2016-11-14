@@ -7,7 +7,7 @@
         android:supportsRtl="true">
         <provider
             android:name=".provider.PreferencesProvider"
-            android:authorities="com.ddmeng.preferencesprovider.provider"
+            android:authorities="@string/preferences_provider_authority"
             android:exported="false" />
     </application>
 

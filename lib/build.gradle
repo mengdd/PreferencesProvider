@@ -9,6 +9,8 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        resValue "string", "preferences_provider_authority", "com.ddmeng.preferencesprovider.provider"
     }
     buildTypes {
         debug {}
