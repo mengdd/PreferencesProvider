@@ -1,7 +1,5 @@
 package com.ddmeng.preferencesprovider.provider;
 
-import java.util.Arrays;
-
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
@@ -10,8 +8,11 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.ddmeng.preferencesprovider.BuildConfig;
+import com.ddmeng.preferencesprovider.R;
 import com.ddmeng.preferencesprovider.provider.base.BaseContentProvider;
 import com.ddmeng.preferencesprovider.provider.preferences.PreferencesColumns;
+
+import java.util.Arrays;
 
 public class PreferencesProvider extends BaseContentProvider {
     private static final String TAG = PreferencesProvider.class.getSimpleName();
@@ -20,20 +21,38 @@ public class PreferencesProvider extends BaseContentProvider {
 
     private static final String TYPE_CURSOR_ITEM = "vnd.android.cursor.item/";
     private static final String TYPE_CURSOR_DIR = "vnd.android.cursor.dir/";
+    private static final String LIBRARY_DEFAULT_AUTHORITY = "com.ddmeng.preferencesprovider.provider";
 
-    public static final String AUTHORITY = "com.ddmeng.preferencesprovider.provider";
-    public static final String CONTENT_URI_BASE = "content://" + AUTHORITY;
+    public static String CONTENT_URI_BASE;
 
     private static final int URI_TYPE_PREFERENCES = 0;
     private static final int URI_TYPE_PREFERENCES_ID = 1;
 
 
-
     private static final UriMatcher URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 
-    static {
-        URI_MATCHER.addURI(AUTHORITY, PreferencesColumns.TABLE_NAME, URI_TYPE_PREFERENCES);
-        URI_MATCHER.addURI(AUTHORITY, PreferencesColumns.TABLE_NAME + "/#", URI_TYPE_PREFERENCES_ID);
+    @Override
+    public boolean onCreate() {
+        super.onCreate();
+        String authority = getContext().getString(R.string.preferences_provider_authority);
+        if (LIBRARY_DEFAULT_AUTHORITY.equals(authority)) {
+            throw new IllegalStateException("Please don't use the library's default authority for your app. \n " +
+                    "Multiple apps with the same authority will fail to install on the same device.\n " +
+                    "Please add the line: \n " +
+                    "==================================================================================================\n " +
+                    " resValue \"string\", \"preferences_provider_authority\", \"${applicationId}.preferencesprovider\" \n " +
+                    "==================================================================================================\n " +
+                    "in your build.gradle file");
+        }
+        setAuthority(authority);
+        return true;
+    }
+
+    private static void setAuthority(String authority) {
+        URI_MATCHER.addURI(authority, PreferencesColumns.TABLE_NAME, URI_TYPE_PREFERENCES);
+        URI_MATCHER.addURI(authority, PreferencesColumns.TABLE_NAME + "/#", URI_TYPE_PREFERENCES_ID);
+        CONTENT_URI_BASE = "content://" + authority;
+
     }
 
     @Override
@@ -73,13 +92,15 @@ public class PreferencesProvider extends BaseContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
-        if (DEBUG) Log.d(TAG, "update uri=" + uri + " values=" + values + " selection=" + selection + " selectionArgs=" + Arrays.toString(selectionArgs));
+        if (DEBUG)
+            Log.d(TAG, "update uri=" + uri + " values=" + values + " selection=" + selection + " selectionArgs=" + Arrays.toString(selectionArgs));
         return super.update(uri, values, selection, selectionArgs);
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        if (DEBUG) Log.d(TAG, "delete uri=" + uri + " selection=" + selection + " selectionArgs=" + Arrays.toString(selectionArgs));
+        if (DEBUG)
+            Log.d(TAG, "delete uri=" + uri + " selection=" + selection + " selectionArgs=" + Arrays.toString(selectionArgs));
         return super.delete(uri, selection, selectionArgs);
     }
 

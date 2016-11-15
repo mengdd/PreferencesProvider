@@ -9,6 +9,8 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+        resValue "string", "preferences_provider_authority", "com.ddmeng.preferencesprovider.provider"
     }
     buildTypes {
         debug {}
@@ -35,7 +37,7 @@ ext {
     siteUrl = 'https://github.com/mengdd/PreferencesProvider'
     gitUrl = 'https://github.com/mengdd/PreferencesProvider'
 
-    libraryVersion = '0.1.0'
+    libraryVersion = '0.2.0'
 
     developerId = 'mengdd'
     developerName = 'Dandan Meng'

@@ -40,7 +40,7 @@ public abstract class BaseContentProvider extends ContentProvider {
     protected SQLiteOpenHelper mSqLiteOpenHelper;
 
     @Override
-    public final boolean onCreate() {
+    public boolean onCreate() {
         if (hasDebug()) {
             // Enable logging of SQL statements as they are executed.
             try {
