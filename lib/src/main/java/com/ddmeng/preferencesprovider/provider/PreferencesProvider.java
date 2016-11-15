@@ -36,8 +36,13 @@ public class PreferencesProvider extends BaseContentProvider {
         super.onCreate();
         String authority = getContext().getString(R.string.preferences_provider_authority);
         if (LIBRARY_DEFAULT_AUTHORITY.equals(authority)) {
-            throw new IllegalStateException("Please don't use the library's default authority for your app. " +
-                    "Multiple apps with the same authority will fail to install on the same device.");
+            throw new IllegalStateException("Please don't use the library's default authority for your app. \n " +
+                    "Multiple apps with the same authority will fail to install on the same device.\n " +
+                    "Please add the line: \n " +
+                    "==================================================================================================\n " +
+                    " resValue \"string\", \"preferences_provider_authority\", \"${applicationId}.preferencesprovider\" \n " +
+                    "==================================================================================================\n " +
+                    "in your build.gradle file");
         }
         setAuthority(authority);
         return true;

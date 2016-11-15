@@ -19,6 +19,35 @@ dependencies {
 
 ```
 
+## Set Authority
+Library users must define their own authority for the content provider.
+
+This is done by defining the `preferences_provider_authority` string value:
+```
+resValue "string", "preferences_provider_authority", "${applicationId}.preferencesprovider"
+```
+For example:
+In your app's `build.gradle`
+```
+defaultConfig {
+    applicationId "com.ddmeng.preferencesprovider.sample"
+    minSdkVersion 14
+    targetSdkVersion 25
+    versionCode 1
+    versionName "1.0"
+    resValue "string", "preferences_provider_authority", "${applicationId}.preferencesprovider"
+}
+```
+
+This is because every content provider needs an unique authority.
+If multiple apps use the library but they have same authority for a content provider, only one app can be installed on a device.
+
+(See issue: https://github.com/mengdd/PreferencesProvider/issues/2).
+
+So the library enforce the client users override the authority. If the authority is not defined, an `IllegalStateException` will be thrown.
+An authority with **applicationId** is recommended.
+
+
 ## Usage
 ### 1. Create a module for your preferences.
 
