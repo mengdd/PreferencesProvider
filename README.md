@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.mengdd.preferencesprovider:preferences-provider:0.1.0'
+    compile 'com.mengdd.preferencesprovider:preferences-provider:0.2.0'
 }
 
 ```
