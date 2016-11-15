@@ -24,10 +24,10 @@ public class PreferencesColumns implements BaseColumns {
     public static final String VALUE = "value";
 
 
-    public static final String DEFAULT_ORDER = TABLE_NAME + "." +_ID;
+    public static final String DEFAULT_ORDER = TABLE_NAME + "." + _ID;
 
     // @formatter:off
-    public static final String[] ALL_COLUMNS = new String[] {
+    public static final String[] ALL_COLUMNS = new String[]{
             _ID,
             MODULE,
             KEY,

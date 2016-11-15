@@ -1,8 +1,8 @@
 package com.ddmeng.preferencesprovider.provider.base;
 
-import android.content.Context;
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Context;
 import android.net.Uri;
 
 public abstract class AbstractContentValues {
